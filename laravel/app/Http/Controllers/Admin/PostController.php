@@ -41,6 +41,19 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $request->validate($this->validateRules());
+        $data = $request->all();
+        $data['user_id'] = Auth::id();
+        $data['slug'] = Str::slug($data['title'], '-');
+        
+        //CREATE A NEW INSTANCE OF POST
+        $newPost = new Post();
+        $newPost->fill($data);
+        $saved = $newPost->save();
+        
+        //CHECK SAVED POST
+        if ($saved) {
+            return redirect()->route('admin.posts.show', $newPost->id);
+        }
     }
 
     /**
