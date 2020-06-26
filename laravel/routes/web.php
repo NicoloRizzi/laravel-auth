@@ -19,12 +19,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-/**
- * ROUTING ADMIN
- */
+//ADMIN
 Route::prefix('admin')
     ->namespace('Admin')
     ->middleware('auth')
     ->group(function () {
-        Route::get('admin/home', 'HomeController@index')->name('home');
-});
+        Route::get('/home', 'HomeController@index')->name('admin.home');
+    });
