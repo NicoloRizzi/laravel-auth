@@ -39,6 +39,9 @@
                         <li>
                             <a class="nav-link" href=" {{ route('home') }}">View site</a>
                         </li>
+                        <li>
+                            <a class="nav-link" href=" {{ route('admin.posts.create') }}">New Post</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
