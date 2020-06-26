@@ -40,7 +40,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate($this->validateRules());
     }
 
     /**
@@ -86,5 +86,16 @@ class PostController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * VALIDATION RULES
+     */
+
+    private function validateRules() {
+        return [
+            'title' => 'required',
+            'body' => 'required',
+        ];
     }
 }
