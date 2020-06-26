@@ -12,8 +12,8 @@
             @endif
         </article>
     @endforeach
-    <div class="wrap-pagination-mt-5 d-flex justify-content-end">
-        {{$post->links}}
+    <div class="wrap-pagination mt-5 d-flex justify-content-end">
+        {{$posts->links()}}
     </div>
 </div>
 @endsection
