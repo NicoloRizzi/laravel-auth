@@ -20,11 +20,11 @@
 
         <div class="form-group">
             <label for="title">Title:</label>
-            <input type="text" name="title" id="title" value="{{ old('title') }}">
+            <input class="form-control" type="text" name="title" id="title" value="{{ old('title') }}">
         </div>
         <div class="form-group">
             <label for="body">Description:</label>
-            <textarea name="body" id="body" value="{{ old('body') }}"></textarea>
+            <textarea class="form-control" name="body" id="body" value="{{ old('body') }}"></textarea>
         </div>
         <input type="submit" class="btn btn-primary" value="Create post">
     </form>
