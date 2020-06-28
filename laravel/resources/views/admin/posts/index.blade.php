@@ -3,7 +3,11 @@
 @section('content')
 <div class="container">
     <h1 class="mb-4">Blog Archive</h1>
-
+    @if (session('post-deleted'))
+        <div class="alert alert-success">
+            <h4>Post deleted successfully</h4>
+        </div>
+    @endif
     <table class="table">
         <thead>
             <tr>
@@ -28,7 +32,11 @@
                         <a href="{{ route('admin.posts.edit', $post->id) }}" class="btn btn-primary">Edit</a>
                     </td>
                     <td>
-                        <a href="" class="btn btn-danger">Delete</a>
+                        <form action="{{ route('admin.posts.destroy', $post->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <input type="submit" class="btn btn-danger" value="Delete">
+                        </form>
                     </td>
                 </tr>
             @endforeach
