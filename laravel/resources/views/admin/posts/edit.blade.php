@@ -24,7 +24,7 @@
         </div>
         <div class="form-group">
             <label for="body">Description:</label>
-            <textarea class="form-control" name="body" id="body" value="{{ old('body', $post->body) }}"></textarea>
+            <textarea class="form-control" name="body" id="body">{{ old('body', $post->body) }}</textarea>
         </div>
         <input type="submit" class="btn btn-primary" value="Edit post">
     </form>
