@@ -26,6 +26,14 @@
             <label for="body">Description:</label>
             <textarea class="form-control" name="body" id="body">{{ old('body', $post->body) }}</textarea>
         </div>
+        <div class="form-group">
+            <label for="path_img">Post Image</label>
+            @isset($post->img)
+                <img width="200" src="{{asset('storage/' . $post->path_img)}}" alt="{{$post->title}}">
+                <h6 class="mt-2">Change:</h6>
+            @endisset
+            <input type="file" class="form-control" name="path_img" id="path_img" accept="image/*">
+        </div>
         <input type="submit" class="btn btn-primary" value="Edit post">
     </form>
 </div>
