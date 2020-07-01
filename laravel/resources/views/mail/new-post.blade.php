@@ -1,6 +1,14 @@
-<h1>New post published</h1>
+@component('mail::message')
+# New Post Created
 
-<p>A new post has been published on your blog</p>
+A new post was created:
 
-<p><strong>Title:</strong>{{ $title }}</p>
-<p><strong>Slug:</strong>{{ $slug }}</p>
+{{ $title }}
+
+@component('mail::button', ['url' => config('app.url') . '/posts' ])
+View Blog Archive
+@endcomponent
+
+Thanks,<br>
+{{ config('app.name') }}
+@endcomponent
