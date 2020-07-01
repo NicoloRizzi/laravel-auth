@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Post;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Post;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use App\Mail\NewPost;
+use Illuminate\Support\Facades\Mail;
 
 class PostController extends Controller
 {
@@ -58,6 +60,7 @@ class PostController extends Controller
         
         //CHECK SAVED POST
         if ($saved) {
+            Mail::to('user@test.it')->send( new NewPost() );
             return redirect()->route('admin.posts.show', $newPost->id);
         }
     }
