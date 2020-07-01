@@ -98,6 +98,15 @@ class PostController extends Controller
         $data['slug'] = Str::slug($data['title'], '-');
         $updated = $post->update($data);
 
+        if (!empty($data['path_img'])) {
+            // delete img precedente
+            if (!empty($post->path_img)) {
+                Storage::disk('public')->delete($post->path_img);
+            }
+            //set new img
+            $data['path_img'] = Storage::disk('public')->put('images', $data['path_img']);
+        }
+
         if($updated) {
             return redirect()->route('admin.posts.show', $post->id);
         }

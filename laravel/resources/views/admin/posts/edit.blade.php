@@ -28,7 +28,7 @@
         </div>
         <div class="form-group">
             <label for="path_img">Post Image</label>
-            @isset($post->img)
+            @isset($post->path_img)
                 <img width="200" src="{{asset('storage/' . $post->path_img)}}" alt="{{$post->title}}">
                 <h6 class="mt-2">Change:</h6>
             @endisset
