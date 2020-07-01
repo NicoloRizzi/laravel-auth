@@ -6,19 +6,25 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use App\Post;
 
 class NewPost extends Mailable
 {
     use Queueable, SerializesModels;
 
     /**
+     * The post instance
+     */
+    private $post;
+
+    /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Post $post)
     {
-        //
+        $this->post = $post;
     }
 
     /**
@@ -29,6 +35,10 @@ class NewPost extends Mailable
     public function build()
     {
         return $this->from('mysite@test.com')
-                    ->view('mail.new-post');
+                    ->view('mail.new-post')
+                    ->with([
+                        'title' => $this->post->title,
+                        'slug' => $this->post->slug,
+                    ]);
     }
 }

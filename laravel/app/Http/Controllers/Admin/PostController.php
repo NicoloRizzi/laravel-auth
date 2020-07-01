@@ -60,7 +60,7 @@ class PostController extends Controller
         
         //CHECK SAVED POST
         if ($saved) {
-            Mail::to('user@test.it')->send( new NewPost() );
+            Mail::to('user@test.it')->send( new NewPost($newPost) );
             return redirect()->route('admin.posts.show', $newPost->id);
         }
     }
